@@ -1,0 +1,44 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8">
+<title>Relatório de QA - Estacionamento</title><style>
+body{font-family:Segoe UI,Arial,sans-serif;max-width:1000px;margin:30px auto;padding:0 16px;color:#222}
+h1{margin-bottom:0} .sub{color:#666;margin-top:4px}
+.kpis{display:flex;flex-wrap:wrap;gap:12px;margin:20px 0}
+.kpi{flex:1;min-width:130px;background:#f4f6f8;border-radius:8px;padding:12px;text-align:center}
+.kpi b{display:block;font-size:26px}
+.decisao{padding:18px;border-radius:8px;text-align:center;font-size:26px;font-weight:bold;color:#fff}
+.LIBERADO{background:#2e7d32}.COMRESSALVAS{background:#ef8f00}.NAOLIBERAR{background:#c62828}
+table{border-collapse:collapse;width:100%;margin:12px 0}
+th,td{border:1px solid #ddd;padding:7px 9px;text-align:left;font-size:14px}
+th{background:#263238;color:#fff}
+tr.PASS td.st{background:#c8e6c9;font-weight:bold}tr.FAIL td.st{background:#ffcdd2;font-weight:bold}
+tr.FAIL{background:#fff5f5}
+.crit{color:#c62828;font-weight:bold}
+</style></head><body>
+<h1>Relatório Final de QA - Sistema de Estacionamento</h1>
+<p class="sub">Execução em 04/10/2026 01:08:05 - COM BUG PROPOSITAL</p>
+
+<div class="decisao NAOLIBERAR">DECISÃO DE QA: NÃO LIBERAR</div>
+
+<div class="kpis">
+<div class="kpi"><b>14</b>Testes</div>
+<div class="kpi"><b>12</b>Aprovados</div>
+<div class="kpi"><b>2</b>Falhas</div>
+<div class="kpi"><b>85.7%</b>Taxa de aprovação</div>
+<div class="kpi"><b>1</b>Falhas críticas</div>
+</div>
+
+<h2>Funcionalidades testadas</h2>
+<table><tr><th>Req.</th><th>Regra de negócio</th><th>Testes</th><th>PASS</th><th>FAIL</th><th>Situação</th></tr>
+<tr><td>RF01</td><td>Cálculo da tarifa: 15 min de tolerância, R$ 5,00 por hora iniciada e teto de R$ 30,00 por dia.</td><td>5</td><td>3</td><td>2</td><td>2 falha(s)</td></tr><tr><td>RF02</td><td>Entrada de veículos: placa válida, sem duplicidade e respeitando a capacidade do pátio.</td><td>4</td><td>4</td><td>0</td><td>OK</td></tr><tr><td>RF03</td><td>Desconto por tipo de cliente: comum 0%, conveniado 20%, mensalista 100%.</td><td>2</td><td>2</td><td>0</td><td>OK</td></tr><tr><td>RF04</td><td>Saída de veículos: cobra a tarifa com desconto e libera a vaga.</td><td>3</td><td>3</td><td>0</td><td>OK</td></tr></table>
+
+<h2>Resultados dos testes</h2>
+<table><tr><th>ID</th><th>Req.</th><th>Teste</th><th>Esperado</th><th>Obtido</th><th>Status</th><th>Severidade</th></tr>
+<tr class='PASS'><td>CT01</td><td>RF01</td><td>Calcular tarifa de 90 min (2 horas iniciadas)</td><td>10.0</td><td>10.0</td><td class='st'>PASS</td><td>Média</td></tr><tr class='PASS'><td>CT02</td><td>RF01</td><td>Não cobrar dentro da tolerância de 15 min</td><td>0.0</td><td>0.0</td><td class='st'>PASS</td><td>Média</td></tr><tr class='FAIL'><td>CT03</td><td>RF01</td><td>Aplicar teto diário em 10 horas de permanência</td><td>30.0</td><td>50.0</td><td class='st'>FAIL</td><td>Crítica</td></tr><tr class='PASS'><td>CT04</td><td>RF01</td><td>Rejeitar tempo de permanência negativo</td><td>ValueError</td><td>ValueError</td><td class='st'>PASS</td><td>Alta</td></tr><tr class='FAIL'><td>CT05</td><td>RF01</td><td>Aplicar teto diário em 24 horas de permanência</td><td>30.0</td><td>120.0</td><td class='st'>FAIL</td><td>Alta</td></tr><tr class='PASS'><td>CT06</td><td>RF02</td><td>Registrar entrada de veículo com placa válida</td><td>True</td><td>True</td><td class='st'>PASS</td><td>Alta</td></tr><tr class='PASS'><td>CT07</td><td>RF02</td><td>Impedir entrada duplicada do mesmo veículo</td><td>VeiculoJaEstacionadoError</td><td>VeiculoJaEstacionadoError</td><td class='st'>PASS</td><td>Crítica</td></tr><tr class='PASS'><td>CT08</td><td>RF02</td><td>Impedir entrada com o pátio lotado</td><td>EstacionamentoLotadoError</td><td>EstacionamentoLotadoError</td><td class='st'>PASS</td><td>Crítica</td></tr><tr class='PASS'><td>CT09</td><td>RF02</td><td>Rejeitar placa com formato inválido</td><td>PlacaInvalidaError</td><td>PlacaInvalidaError</td><td class='st'>PASS</td><td>Média</td></tr><tr class='PASS'><td>CT10</td><td>RF03</td><td>Aplicar 20% de desconto a cliente conveniado</td><td>8.0</td><td>8.0</td><td class='st'>PASS</td><td>Média</td></tr><tr class='PASS'><td>CT11</td><td>RF03</td><td>Rejeitar tipo de cliente inexistente</td><td>TipoClienteInvalidoError</td><td>TipoClienteInvalidoError</td><td class='st'>PASS</td><td>Média</td></tr><tr class='PASS'><td>CT12</td><td>RF04</td><td>Cobrar corretamente na saída (120 min)</td><td>10.0</td><td>10.0</td><td class='st'>PASS</td><td>Alta</td></tr><tr class='PASS'><td>CT13</td><td>RF04</td><td>Rejeitar saída de veículo que não está no pátio</td><td>VeiculoNaoEncontradoError</td><td>VeiculoNaoEncontradoError</td><td class='st'>PASS</td><td>Alta</td></tr><tr class='PASS'><td>CT14</td><td>RF04</td><td>Liberar a vaga após a saída do veículo</td><td>1</td><td>1</td><td class='st'>PASS</td><td>Média</td></tr></table>
+
+<h2>Defeitos encontrados</h2>
+<table><tr><th>ID</th><th>Requisito</th><th>Teste</th><th>Descrição do defeito</th><th>Severidade</th></tr><tr><td>CT03</td><td>RF01</td><td>Aplicar teto diário em 10 horas de permanência</td><td>Esperado <b>30.0</b>, mas o sistema retornou <b>50.0</b></td><td class='crit'>Crítica</td></tr><tr><td>CT05</td><td>RF01</td><td>Aplicar teto diário em 24 horas de permanência</td><td>Esperado <b>30.0</b>, mas o sistema retornou <b>120.0</b></td><td>Alta</td></tr></table>
+
+<h2>Conclusão</h2>
+<p>Há pelo menos uma falha crítica. A versão não deve ser liberada até a correção.</p>
+<p><small>Política: falha crítica = NÃO LIBERAR; falhas não críticas = LIBERADO COM RESSALVAS; sem falhas = LIBERADO.</small></p>
+</body></html>

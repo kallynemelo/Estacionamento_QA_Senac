@@ -1,0 +1,3 @@
+﻿ID,Requisito,Teste,Esperado,Obtido,Status,Severidade,DataHora
+CT03,RF01,Aplicar teto diário em 10 horas de permanência,30.0,50.0,FAIL,Crítica,04/10/2026 01:08:05
+CT05,RF01,Aplicar teto diário em 24 horas de permanência,30.0,120.0,FAIL,Alta,04/10/2026 01:08:05

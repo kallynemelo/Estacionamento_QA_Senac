@@ -1,0 +1,175 @@
+{
+  "metricas": {
+    "total": 14,
+    "aprovados": 12,
+    "falhas": 2,
+    "taxa_aprovacao": 85.7,
+    "taxa_falha": 14.3,
+    "falhas_criticas": 1,
+    "por_requisito": {
+      "RF01": {
+        "total": 5,
+        "pass": 3,
+        "fail": 2
+      },
+      "RF02": {
+        "total": 4,
+        "pass": 4,
+        "fail": 0
+      },
+      "RF03": {
+        "total": 2,
+        "pass": 2,
+        "fail": 0
+      },
+      "RF04": {
+        "total": 3,
+        "pass": 3,
+        "fail": 0
+      }
+    }
+  },
+  "decisao": "NÃO LIBERAR",
+  "resultados": [
+    {
+      "ID": "CT01",
+      "Requisito": "RF01",
+      "Teste": "Calcular tarifa de 90 min (2 horas iniciadas)",
+      "Esperado": 10.0,
+      "Obtido": 10.0,
+      "Status": "PASS",
+      "Severidade": "Média",
+      "DataHora": "04/10/2026 01:08:05"
+    },
+    {
+      "ID": "CT02",
+      "Requisito": "RF01",
+      "Teste": "Não cobrar dentro da tolerância de 15 min",
+      "Esperado": 0.0,
+      "Obtido": 0.0,
+      "Status": "PASS",
+      "Severidade": "Média",
+      "DataHora": "04/10/2026 01:08:05"
+    },
+    {
+      "ID": "CT03",
+      "Requisito": "RF01",
+      "Teste": "Aplicar teto diário em 10 horas de permanência",
+      "Esperado": 30.0,
+      "Obtido": 50.0,
+      "Status": "FAIL",
+      "Severidade": "Crítica",
+      "DataHora": "04/10/2026 01:08:05"
+    },
+    {
+      "ID": "CT04",
+      "Requisito": "RF01",
+      "Teste": "Rejeitar tempo de permanência negativo",
+      "Esperado": "ValueError",
+      "Obtido": "ValueError",
+      "Status": "PASS",
+      "Severidade": "Alta",
+      "DataHora": "04/10/2026 01:08:05"
+    },
+    {
+      "ID": "CT05",
+      "Requisito": "RF01",
+      "Teste": "Aplicar teto diário em 24 horas de permanência",
+      "Esperado": 30.0,
+      "Obtido": 120.0,
+      "Status": "FAIL",
+      "Severidade": "Alta",
+      "DataHora": "04/10/2026 01:08:05"
+    },
+    {
+      "ID": "CT06",
+      "Requisito": "RF02",
+      "Teste": "Registrar entrada de veículo com placa válida",
+      "Esperado": true,
+      "Obtido": true,
+      "Status": "PASS",
+      "Severidade": "Alta",
+      "DataHora": "04/10/2026 01:08:05"
+    },
+    {
+      "ID": "CT07",
+      "Requisito": "RF02",
+      "Teste": "Impedir entrada duplicada do mesmo veículo",
+      "Esperado": "VeiculoJaEstacionadoError",
+      "Obtido": "VeiculoJaEstacionadoError",
+      "Status": "PASS",
+      "Severidade": "Crítica",
+      "DataHora": "04/10/2026 01:08:05"
+    },
+    {
+      "ID": "CT08",
+      "Requisito": "RF02",
+      "Teste": "Impedir entrada com o pátio lotado",
+      "Esperado": "EstacionamentoLotadoError",
+      "Obtido": "EstacionamentoLotadoError",
+      "Status": "PASS",
+      "Severidade": "Crítica",
+      "DataHora": "04/10/2026 01:08:05"
+    },
+    {
+      "ID": "CT09",
+      "Requisito": "RF02",
+      "Teste": "Rejeitar placa com formato inválido",
+      "Esperado": "PlacaInvalidaError",
+      "Obtido": "PlacaInvalidaError",
+      "Status": "PASS",
+      "Severidade": "Média",
+      "DataHora": "04/10/2026 01:08:05"
+    },
+    {
+      "ID": "CT10",
+      "Requisito": "RF03",
+      "Teste": "Aplicar 20% de desconto a cliente conveniado",
+      "Esperado": 8.0,
+      "Obtido": 8.0,
+      "Status": "PASS",
+      "Severidade": "Média",
+      "DataHora": "04/10/2026 01:08:05"
+    },
+    {
+      "ID": "CT11",
+      "Requisito": "RF03",
+      "Teste": "Rejeitar tipo de cliente inexistente",
+      "Esperado": "TipoClienteInvalidoError",
+      "Obtido": "TipoClienteInvalidoError",
+      "Status": "PASS",
+      "Severidade": "Média",
+      "DataHora": "04/10/2026 01:08:05"
+    },
+    {
+      "ID": "CT12",
+      "Requisito": "RF04",
+      "Teste": "Cobrar corretamente na saída (120 min)",
+      "Esperado": 10.0,
+      "Obtido": 10.0,
+      "Status": "PASS",
+      "Severidade": "Alta",
+      "DataHora": "04/10/2026 01:08:05"
+    },
+    {
+      "ID": "CT13",
+      "Requisito": "RF04",
+      "Teste": "Rejeitar saída de veículo que não está no pátio",
+      "Esperado": "VeiculoNaoEncontradoError",
+      "Obtido": "VeiculoNaoEncontradoError",
+      "Status": "PASS",
+      "Severidade": "Alta",
+      "DataHora": "04/10/2026 01:08:05"
+    },
+    {
+      "ID": "CT14",
+      "Requisito": "RF04",
+      "Teste": "Liberar a vaga após a saída do veículo",
+      "Esperado": 1,
+      "Obtido": 1,
+      "Status": "PASS",
+      "Severidade": "Média",
+      "DataHora": "04/10/2026 01:08:05"
+    }
+  ]
+}

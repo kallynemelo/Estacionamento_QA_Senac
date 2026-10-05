@@ -1,0 +1,15 @@
+﻿ID,Requisito,Teste,Esperado,Obtido,Status,Severidade,DataHora
+CT01,RF01,Calcular tarifa de 90 min (2 horas iniciadas),10.0,10.0,PASS,Média,04/10/2026 01:08:05
+CT02,RF01,Não cobrar dentro da tolerância de 15 min,0.0,0.0,PASS,Média,04/10/2026 01:08:05
+CT03,RF01,Aplicar teto diário em 10 horas de permanência,30.0,30.0,PASS,Crítica,04/10/2026 01:08:05
+CT04,RF01,Rejeitar tempo de permanência negativo,ValueError,ValueError,PASS,Alta,04/10/2026 01:08:05
+CT05,RF01,Aplicar teto diário em 24 horas de permanência,30.0,30.0,PASS,Alta,04/10/2026 01:08:05
+CT06,RF02,Registrar entrada de veículo com placa válida,True,True,PASS,Alta,04/10/2026 01:08:05
+CT07,RF02,Impedir entrada duplicada do mesmo veículo,VeiculoJaEstacionadoError,VeiculoJaEstacionadoError,PASS,Crítica,04/10/2026 01:08:05
+CT08,RF02,Impedir entrada com o pátio lotado,EstacionamentoLotadoError,EstacionamentoLotadoError,PASS,Crítica,04/10/2026 01:08:05
+CT09,RF02,Rejeitar placa com formato inválido,PlacaInvalidaError,PlacaInvalidaError,PASS,Média,04/10/2026 01:08:05
+CT10,RF03,Aplicar 20% de desconto a cliente conveniado,8.0,8.0,PASS,Média,04/10/2026 01:08:05
+CT11,RF03,Rejeitar tipo de cliente inexistente,TipoClienteInvalidoError,TipoClienteInvalidoError,PASS,Média,04/10/2026 01:08:05
+CT12,RF04,Cobrar corretamente na saída (120 min),10.0,10.0,PASS,Alta,04/10/2026 01:08:05
+CT13,RF04,Rejeitar saída de veículo que não está no pátio,VeiculoNaoEncontradoError,VeiculoNaoEncontradoError,PASS,Alta,04/10/2026 01:08:05
+CT14,RF04,Liberar a vaga após a saída do veículo,1,1,PASS,Média,04/10/2026 01:08:05
