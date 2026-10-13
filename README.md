@@ -51,3 +51,10 @@ Em `sistema/estacionamento.py`, a constante `BUG_PROPOSITAL = True` (ou `--bug`)
 ## Arquivos gerados em `saida/`
 - `normal/` e `com_bug/`: `resultados_qa.csv`, `defeitos_qa.csv`, `relatorio_final_qa.html`, `resumo.json`
 - `comparativo_antes_depois.html`
+
+## Equipe
+- Abigail Maria (abigailmariagoncalvesnazario@gmail.com)
+- Carolline Barbosa (carollinebarbosa225@gmail.com)
+- Kallyne Victoria (kallynemelo2020@gmail.com)
+- Marcelly Arcanjo (marcellyarcanjo7@gmail.com)
+- Maria Cecília (cecilmari33@gmail.com)
